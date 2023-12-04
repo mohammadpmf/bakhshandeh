@@ -2,7 +2,7 @@ from tkinter import *
 from tkinter import messagebox as msb
 from tkinter import ttk
 from threading import Thread
-from services import news_search
+from services import news_search, update_collection
 import smtplib, ssl
 import webbrowser
 
@@ -34,7 +34,7 @@ def search(event=None):
         info = []
         for key, value in data.items():
             info.append(value)
-            print(info)
+            # print(info)
         treev.insert(parent='', index=0, iid=info[0], text=info[0], values=info[1:])
             # _id <class 'str'>
             # title <class 'str'>
@@ -59,7 +59,7 @@ def send_email_2(email_address):
         message += "some links about your favorite title. Hope you enjoy it! Here you are:\n"
         for link in links:
             message+=f"{link}\n"
-        print(message)
+        # print(message)
         context = ssl.create_default_context()
         with smtplib.SMTP_SSL(SMTP_SERVER, PORT, context=context) as server:
             server.login(SENDER, PASSWORD)
@@ -69,6 +69,7 @@ def send_email_2(email_address):
         msb.showwarning("Warning", "Check if the email address really exists!")
     finally:
         btn_email.config(state='normal', relief='raised')
+
 
 def send_email(event=None):
     email_address = e_email.get().strip()
@@ -86,7 +87,7 @@ def send_email(event=None):
     btn_email.config(state='disabled', relief='flat')
 
 
-def on_click(event):
+def on_dblclick(event):
     try:
         item = treev.selection()[0]
         values = treev.item(item)
@@ -104,10 +105,13 @@ def on_click(event):
         msb.showwarning("!", "Click on an Item Please!")
     # print("you clicked on", event, treev.item(item))
 
+def update():
+    update_collection()
+    msb.showinfo("Success", "News has been updated!")
     
 
 root = Tk()
-root.geometry('1200x500+50+50')
+root.geometry('1200x550+50+50')
 root.config(bg=BG)
 
 
@@ -131,20 +135,22 @@ l_welcome.pack()
 
 # frame middle
 l_search= Label(frame_middle, text='What are you looking for?', bg=BG, fg=FG, font=('Times', 22))
+btn_update = Button(frame_middle, text='Click here to get the latest update', bg=BG, fg=FG, font=('Times', 12), command=update)
 e_search = Entry(frame_middle, bg=BG2, fg=FG, insertbackground=FG, font=('Times', 22), bd=4)
 e_search.bind('<Return>', search)
 btn_search = Button(frame_middle, bg=BG, fg=FG, font=('', 18), relief='raised', bd=4, text='Search', padx=24, command=search)
 l_dbl_click= Label(frame_middle, text='Double click on a row to open the link in browser', bg=BG, fg=FG, font=('Times', 14))
 l_search.grid(row=1, column=1, columnspan=2)
-e_search.grid(row=2, column=1)
-btn_search.grid(row=2, column=2, padx=10)
-l_dbl_click.grid(row=3, column=1, columnspan=2)
+btn_update.grid(row=2, column=1, columnspan=2, pady=10)
+e_search.grid(row=3, column=1)
+btn_search.grid(row=3, column=2, padx=10)
+l_dbl_click.grid(row=4, column=1, columnspan=2)
 # end frame middle
 
 
 # frame middle2
 treev = ttk.Treeview(frame_middle2, columns=(1, 2, 3, 4, 5), show='headings', height=8)
-treev.bind("<Double-1>", on_click)
+treev.bind("<Double-1>", on_dblclick)
 treev.heading(1, text='title')
 treev.column(1, width=200, anchor='c')
 treev.heading(2, text='description')
@@ -166,8 +172,8 @@ vertical_scroll_bar.grid(row=10, column=11, sticky='ns')
 
 
 # frame bottom
-l_email= Label(frame_bottom, text='Enter your email address if you want to get email of above links?\nYou can separate multiple emails by \',\'', bg=BG, fg=FG2, font=('Times', 18))
-e_email = Entry(frame_bottom, bg=BG2, fg=FG2, insertbackground=FG, font=('Times', 18), bd=3, width=26)
+l_email= Label(frame_bottom, text='Enter your email address if you want to get email of above links.\nYou can separate multiple emails by \',\'', bg=BG, fg=FG2, font=('Times', 18))
+e_email = Entry(frame_bottom, bg=BG2, fg=FG2, insertbackground=FG2, font=('Times', 18), bd=3, width=26)
 e_email.bind("<Return>", send_email)
 btn_email = Button(frame_bottom, bg=BG, fg=FG2, font=('', 18), relief='raised', bd=4, text='Send', padx=28, command=send_email)
 l_email.grid(row=1, column=1, columnspan=2)

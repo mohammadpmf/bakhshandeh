@@ -10,5 +10,5 @@ tree = ttk.Treeview()
 tree.pack()
 for i in range(10):
     tree.insert("", "end", text=f"Item {i}")
-tree.bind("<ButtonRelease-1>", OnDoubleClick)
+tree.bind("<Double-1>", OnDoubleClick)
 root.mainloop()

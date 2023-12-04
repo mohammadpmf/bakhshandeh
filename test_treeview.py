@@ -19,12 +19,9 @@ class App(tk.Frame):
         self.tree.heading("time", text="Time")
         self.tree.heading("loc",  text="Location")
 
-        self.tree.insert("","end", text = "Grace",
-                         values = ("2010-09-23","03:44:53","Garden"))
-        self.tree.insert("","end", text = "John" ,
-                         values = ("2017-02-05","11:30:23","Airport"))
-        self.tree.insert("","end", text = "Betty",
-                         values = ("2014-06-25","18:00:00",""))
+        self.tree.insert("","end", text = "Grace",values = ("2010-09-23","03:44:53","Garden"))
+        self.tree.insert("","end", text = "John" ,values = ("2017-02-05","11:30:23","Airport"))
+        self.tree.insert("","end", text = "Betty",values = ("2014-06-25","18:00:00",""))
 
         self.tree.grid()
         self.tree.bind('<ButtonRelease-1>', self.selectItem)
@@ -38,14 +35,9 @@ class App(tk.Frame):
     def setup_selection(self, sel_bg, sel_fg):
         self._font = tkFont.Font()
 
-        self._canvas = tk.Canvas(self.tree,
-                                 background=sel_bg,
-                                 borderwidth=0,
-                                 highlightthickness=0)
+        self._canvas = tk.Canvas(self.tree, background=sel_bg, borderwidth=0, highlightthickness=0)
 
-        self._canvas.text = self._canvas.create_text(0, 0,
-                                                     fill=sel_fg,
-                                                     anchor='w')
+        self._canvas.text = self._canvas.create_text(0, 0, fill=sel_fg, anchor='w')
 
     def selectItem(self, event):
         # Remove Canvas overlay from GUI
