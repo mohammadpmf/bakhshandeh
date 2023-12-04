@@ -1,0 +1,34 @@
+Show databases
+show dbs
+
+Check which db we use
+db
+
+Create database
+use <name>
+
+Create Collection on Database
+db.createCollection(<name in string>)
+for creating collection yout can add some options to end of it. 
+
+Show all collectiosns of a db
+show collections
+
+CRUD
+Create
+db.<collection name>.insertOne({})
+
+Read
+read all documents
+db.<collection name>.find(query, projection)
+db.<collection name>.findOne(query, projection)
+query: use for filter
+projection: use for show/hide columns
+
+Operations for Query and projection
+
+Update
+upsert option when 
+
+_id
+hash value mongo create auto to make data unique
