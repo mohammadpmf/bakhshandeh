@@ -7,11 +7,11 @@ app = Flask(__name__)
 def get_news():
     return "no news is good news"
 
-@app.route("/madval/")
+@app.route("/mohammad/")
 def get_news2():
-    return "Madval message"
+    return "Mohammad message"
 
-@app.route("/madval/<test>/")
+@app.route("/mohammad/<test>/")
 def get_news3(test):
     return f'''
     <!DOCTYPE html>
@@ -22,7 +22,7 @@ def get_news3(test):
             <title>Document</title>
         </head>
         <body style="background-color: aqua;">
-             Madval messages <br> {test}
+             Mohammad messages <br> {test}
         </body>
     </html>
     '''
