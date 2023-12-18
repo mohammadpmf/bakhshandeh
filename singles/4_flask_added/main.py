@@ -1,5 +1,5 @@
 from flask import Flask, jsonify
-from m3 import cpu_percent, ram_percent, ram_usage
+from m4 import cpu_percent, ram_percent, ram_usage
 
 app = Flask(__name__)
 
@@ -19,7 +19,7 @@ def get_ram_percentage():
 def get_ram_usage():
     return ram_usage()
 
-@app.route("/<query>/", methods=['GET'])
+@app.route("/ram/<query>/", methods=['GET'])
 def get_news3(query):
     return f'''
     <!DOCTYPE html>
@@ -30,7 +30,7 @@ def get_news3(query):
             <title>Document</title>
         </head>
         <body style="background-color: aqua;">
-             Madval messages <br> {query}
+             Mohammad messages <br> {query}
         </body>
     </html>
     '''
