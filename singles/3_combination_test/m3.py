@@ -5,14 +5,14 @@ import psutil
 def cpu_percent():
     N=1
     cpu_usage = psutil.cpu_percent(N) # Calling psutil.cpu_precent() for N seconds
-    df = pd.DataFrame({'cpu_usage': [cpu_usage, 100-cpu_usage]})
-    fig = px.bar(df, y='cpu_usage', color=['using', 'free'], title='CPU Usage in %', range_y=[0, 100], width=500) # plotting the bar chart 
+    df = pd.DataFrame({'Amount of CPU usage in %': [cpu_usage, 100-cpu_usage]})
+    fig = px.bar(df, y='Amount of CPU usage in %', color=['using', 'free'], title='CPU Usage in %', range_y=[0, 100], width=500) # plotting the bar chart 
     fig.write_html('first_figure.html', auto_open=True) # showing the plot
 
 def ram_percent():
     ram_usage = psutil.virtual_memory()[2] # Getting % usage of virtual_memory (3rd field)
-    df = pd.DataFrame({'ram_usage': [ram_usage, 100-ram_usage]})
-    fig = px.bar(df, y='ram_usage', color=['using', 'free'], title='Ram Usage in %', range_y=[0, 100], width=500) # plotting the bar chart 
+    df = pd.DataFrame({'Amount of RAM usage in %': [ram_usage, 100-ram_usage]})
+    fig = px.bar(df, y='Amount of RAM usage in %', color=['using', 'free'], title='Ram Usage in %', range_y=[0, 100], width=500) # plotting the bar chart 
     fig.write_html('first_figure.html', auto_open=True) # showing the plot
 
 def ram_usage():
