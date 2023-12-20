@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from m6 import ComputerInfo
+from m5 import cpu_percent, ram_percent, get_ram_usage, get_ram_usage2
 
 app = Flask(__name__)
 
@@ -15,7 +15,6 @@ def get_info():
     ram_free  = request.args.get('ram_free', 0)
     ram_used2  = request.args.get('ram_used2', 0)
     ram_free2  = request.args.get('ram_free2', 0)
-    ComputerInfo(cpu_usage, ram_usage, ram_used, ram_free)
     status = 200
     if cpu_usage != 0:
         return f"Status Code is: {status}{'<br>'*2}{cpu_percent(cpu_usage)}", status
