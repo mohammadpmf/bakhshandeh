@@ -19,8 +19,10 @@ def get_ram_percentage():
 def get_ram_usage():
     return ram_usage()
 
+# @app.route("/ram/<query>/", methods=['POST']) # In this code, output is "Method not allowed in html"
+# @app.route("/ram/<query>/") # works
 @app.route("/ram/<query>/", methods=['GET'])
-def get_news3(query):
+def my_test(query):
     return f'''
     <!DOCTYPE html>
         <html lang="en">
