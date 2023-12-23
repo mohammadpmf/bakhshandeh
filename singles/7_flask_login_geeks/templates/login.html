@@ -15,6 +15,10 @@
             margin-right: 15%;
             margin-left: 15%;
         }
+        p{
+            color: red;
+            font-size: 2em;
+        }
 	</style>
 </head>
 <body>
@@ -39,5 +43,9 @@
             </tr>
         </table>
     </form>
+    {% if error %}
+        <p> {{ error }} </p>
+    {% endif %}
+
 </body>
 </html>
