@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask
 from m4 import cpu_percent, ram_percent, ram_usage
 
 app = Flask(__name__)

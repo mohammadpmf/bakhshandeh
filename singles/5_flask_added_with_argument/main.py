@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request
 from m5 import cpu_percent, ram_percent, get_ram_usage, get_ram_usage2
 
 app = Flask(__name__)
@@ -29,6 +29,6 @@ def get_info():
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return f"<h1>Page Totally Not Found</h1><br><p>{e}</p>", 404
+    return f"<center><h1>Page Not Found</h1><br><p>{e}</p></center>", 404
 
 app.run(port=5000, debug=True)

@@ -2,12 +2,14 @@ import pandas as pd
 import plotly.express as px
 
 class ComputerInfo():
-    def __init__(self, cpu_usage=0, ram_usage=0, ram_used=0, ram_free=0):
+    def __init__(self, cpu_usage=0, ram_usage=0, ram_used=0, ram_free=0, ram_used2=0, ram_free2=0, total_ram=0):
         self.cpu_usage = float(cpu_usage)
         self.ram_usage = float(ram_usage)
         self.ram_used = float(ram_used)
         self.ram_free = float(ram_free)
-        self.total_ram = self.ram_used+self.ram_free
+        self.ram_used2 = float(ram_used2)
+        self.ram_free2 = float(ram_free2)
+        self.total_ram = self.ram_used2+self.ram_free2 # total_ram ro nemidoonestam Alireza Mitoone Befreste ya na be khatere hamin az jame in 2 ta hesab kardam.
 
     def get_cpu_percent(self):
         self.df = pd.DataFrame({'Amount of CPU usage in %': [self.cpu_usage, 100-self.cpu_usage]})
@@ -31,6 +33,6 @@ class ComputerInfo():
         
     def get_ram_usage2(self):
         # bar_chart
-        self.df = pd.DataFrame({'ram_used': [self.ram_used, self.ram_free]})
+        self.df = pd.DataFrame({'ram_used': [self.ram_used2, self.ram_free2]})
         self.fig = px.bar(self.df, title='Ram Status', color=['using', 'free'], range_y=[0, self.total_ram], width=500) # plotting the bar chart 
         return self.fig.to_html()
