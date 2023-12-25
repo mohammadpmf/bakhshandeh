@@ -32,3 +32,19 @@ upsert option when
 
 _id
 hash value mongo create auto to make data unique
+
+https://www.w3schools.com/mongodb/mongodb_mongosh_create_database.php
+دیتابیس وجود نداره تا وقتی داخلش یه تیبل بسازیم
+https://www.w3schools.com/mongodb/mongodb_mongosh_create_collection.php
+https://www.w3schools.com/mongodb/mongodb_mongosh_insert.php
+https://www.w3schools.com/mongodb/mongodb_mongosh_find.php
+https://www.w3schools.com/mongodb/mongodb_mongosh_update.php
+https://www.w3schools.com/mongodb/mongodb_mongosh_delete.php
+https://www.w3schools.com/mongodb/mongodb_query_operators.php
+فقط ریجیکس رو بگم چون آقای بخشنده استفاده کرده بود و کاربردی تره. بقیه لازم نیست
+خود ریجیکس هم همون حالت ساده اش که فقط اگه داخلش باشه پیدا کنه کافیه
+https://www.py4e.com/html3/11-regex
+بیشتر بدانید که لازم نیست گفته بشه. اگه لازم شد همین لینک هست.
+https://www.w3schools.com/mongodb/mongodb_aggregations_intro.php
+خود این و از اینجا به بعد هم لازم نیست. اما خیلی کارهای بیشتری میشه کرد
+اگه گروهی خیلی خوب بودند مربی میتونه باهاشون پیش بره.

@@ -5,12 +5,8 @@ from pymongo.collection import Collection
 
 def get_db(databse:str) -> Database:
     client = pymongo.MongoClient("localhost", 27017)
-    return client[databse]
-
-
-def create_collection(databse:str, collection:str) -> None:
-    db = get_db(databse)
-    db.createCollection(collection)
+    return client.get_database(databse)
+    return client[databse] # کد آقای بخشنده
 
 
 def list_colecctions(databse:str) -> list:
