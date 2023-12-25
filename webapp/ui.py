@@ -1,6 +1,5 @@
 from tkinter import *
-from tkinter import messagebox as msb
-from tkinter import ttk
+from tkinter import messagebox as msb, ttk
 from threading import Thread
 from services import news_search, update_collection
 import smtplib, ssl
@@ -35,7 +34,8 @@ def search(event=None):
         for key, value in data.items():
             info.append(value)
             # print(info)
-        treev.insert(parent='', index=0, iid=info[0], text=info[0], values=info[1:])
+        treev.insert('', 0, text=info[0], values=info[1:])
+        # treev.insert(parent='', index=0, iid=info[0], text=info[0], values=info[1:])
             # _id <class 'str'>
             # title <class 'str'>
             # description <class 'str'>
@@ -56,12 +56,12 @@ def send_email_2(email_address):
                 if link.startswith('http'):
                     links.append(link)
         message = "Hi there!\nYou have requested to get this email which contains "
-        message += "some links about your favorite title. Hope you enjoy it! Here you are:\n"
+        message += "some links about your favorite subject. Hope you enjoy it! Here you are:\n"
         for link in links:
             message+=f"{link}\n"
         # print(message)
         context = ssl.create_default_context()
-        with smtplib.SMTP_SSL(SMTP_SERVER, PORT, context=context) as server:
+        with smtplib.SMTP_SSL(SMTP_SERVER, PORT, context=context) as server: # In Python, the with statement replaces a try-catch block with a concise shorthand. More importantly, it ensures closing resources right after processing them. A common example of using the with statement is reading or writing to a file. A function or class that supports the with statement is known as a context manager.
             server.login(SENDER, PASSWORD)
             server.sendmail(SENDER, email_address, message)
             msb.showinfo("Success", "Email sent successfully!")
@@ -84,6 +84,10 @@ def send_email(event=None):
         return
     email_address = email_address.split(',')
     Thread(target=send_email_2, args=(email_address,), daemon=True).start()
+    # A daemon thread is a background thread. A daemon thread is useful for
+    # executing tasks that are not critical. The program can exit and doesn't
+    # need to wait for the daemon threads to be completed. A daemon thread is
+    # automatically killed when the program exits.
     btn_email.config(state='disabled', relief='flat')
 
 
@@ -163,6 +167,10 @@ treev.heading(5, text='pubDate')
 treev.column(5, width=200, anchor='c')
 style = ttk.Style()
 style.theme_use("default")
+style.configure("Treeview",background=BG,foreground=FG, rowheight=24, fieldbackground=BG, font=('Times', 8))
+style.configure("Treeview.Heading", background=BG, foreground=FG, font=('Times', 12))
+style.map("Treeview",background=[('selected', FG)])
+style.map("Treeview",foreground=[('selected', BG)])
 style.map("Treeview")
 treev.grid(row=10, column=1, columnspan=10)
 vertical_scroll_bar = Scrollbar(frame_middle2, orient='vertical', command=treev.yview)

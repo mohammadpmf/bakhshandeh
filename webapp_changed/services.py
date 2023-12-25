@@ -3,10 +3,12 @@ import requests
 import xml.etree.ElementTree as ET
 import pymongo
 
+
 def fetch_xml():
     response = requests.get("https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml")
     xml_tree = ET.fromstring(response.content)
     return xml_tree.findall('.//item')
+
 
 def news_list() -> list:
     cursor = db.news.find()
@@ -77,6 +79,7 @@ def update_collection():
         news_create(obj)
     msg = {'message': 'Update successfully done.'}
     return msg
+
 
 client = pymongo.MongoClient('localhost', 27017)
 db = client['feeds']
