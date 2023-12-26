@@ -9,7 +9,7 @@ use <name>
 
 Create Collection on Database
 db.createCollection(<name in string>)
-for creating collection yout can add some options to end of it. 
+for creating collection you can add some options to end of it.
 
 Show all collectiosns of a db
 show collections
@@ -34,7 +34,7 @@ _id
 hash value mongo create auto to make data unique
 
 https://www.w3schools.com/mongodb/mongodb_mongosh_create_database.php
-دیتابیس وجود نداره تا وقتی داخلش یه تیبل بسازیم
+دیتابیس وجود نداره تا وقتی داخلش یه کالکشن بسازیم
 https://www.w3schools.com/mongodb/mongodb_mongosh_create_collection.php
 https://www.w3schools.com/mongodb/mongodb_mongosh_insert.php
 https://www.w3schools.com/mongodb/mongodb_mongosh_find.php

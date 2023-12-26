@@ -1,0 +1,103 @@
+use poulstar
+
+db.createCollection("teachers")
+db.createCollection("students")
+db.createCollection("staff")
+
+show collections
+
+db.teachers.insertOne({name: "Mohammad", surname: "Fallah", number: "09356640204"})
+db.teachers.insertOne({name: "Mohammad", "surname": "Fallah", number: "09356640204"})
+این هم باشه گیر نمیده. یعنی دور نام خانوادگی کوتیشن نذاشتم.
+db.teachers.insertOne({name: "Mohammad", 'surname': 'Fallah', number: "09119119911"})
+این طوری هم گیر نداد. یعنی کوتیشن هم میشناسه.
+اینا همه توی کامند لاین هست. توی گرافیکی گیر میده و باید حتما دابل کوتیشن دور اسم
+کلید ها باشه و ویرگول اضافه هم نباید باشه و دقیقا به فرمت جیسون باشه.
+
+این هم یک داده الکی که میشه داخل همون کالکشن اضافه کرد
+db.teachers.insertOne({
+  title: "Post Title 1",
+  body: "Body of post.",
+  category: "News",
+  likes: 1,
+  tags: ["news", "events"],
+  date: Date(),
+  number: "0123"
+})
+
+db.teachers.insertMany(
+[{
+  name: 'Fatemeh',
+  surname: "Motamed",
+  number: '09345874887'
+},
+{
+  name: "Ailin",
+  'surname': 'Hajipour',
+  "number": "08974587796"
+},
+])
+
+این هم یک سری اینزرت منی الکی که البته داخل کالکشن دانش آموزان هست.
+db.students.insertMany([  
+  {
+    title: "Post Title 2",
+    body: "Body of post.",
+    category: "Event",
+    likes: 2,
+    tags: ["news", "events"],
+    date: Date()
+  },
+  {
+    title: "Post Title 3",
+    body: "Body of post.",
+    category: "Technology",
+    likes: 3,
+    tags: ["news", "events"],
+    date: Date()
+  },
+  {
+    title: "Post Title 4",
+    body: "Body of post.",
+    category: "Event",
+    likes: 4,
+    tags: ["news", "events"],
+    date: Date()
+  }
+])
+
+
+
+db.teachers.find()
+db.teachers.find({}, {_id: 0, name:1, number:1})
+db.teachers.find({}, {_id: 0, name:1})
+db.teachers.find({}, {_id: 0, number: 0})
+db.teachers.find({name: "Mohammad"})
+db.teachers.findOne({name: "Mohammad"})
+db.teachers.find({name: "Mohammad"}, {_id: 0, name:1, number:1})
+db.teachers.findOne({name: "Mohammad"}, {_id: 0, name:1, number:1})
+
+
+db.teachers.updateOne({name:"Mohammad" }, { $set: { surname: 'Falah' } } )
+
+اگر وجود نداشت و بخوایم اضافه کنیم، به عنوان ورودی سوم دیکشنری آپزرت رو میدیم.
+db.teachers.updateOne(
+  { name: "Mohammad 2" }, 
+  {
+    $set: 
+      {
+        name: "Mohammad 2",
+        surname: "Fallah",
+        number: "01234567890"
+      }
+  }, 
+  { upsert: true }
+)
+
+این هم برای تغییر همه با یک دستور که افزایش میده.
+db.students.updateMany({}, { $inc: { likes: 10 } })
+
+
+db.teachers.deleteOne({ name: "Mohammad 2" })
+db.teachers.deleteOne({ name: "Mohammad" })
+db.teachers.deleteMany({ name: "Mohammad" })
