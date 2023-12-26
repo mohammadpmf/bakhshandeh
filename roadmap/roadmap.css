@@ -1,0 +1,140 @@
+@font-face {
+    font-family: badkhat;
+    src: url(fonts/bad\ khat.ttf);
+}
+@font-face {
+    font-family: nazanin;
+    src: url(fonts/BNazanin.ttf);
+}
+@font-face {
+    font-family: fedra;
+    src: url(fonts/Fedra\ Arabic\ Display\ AR\ LT\ Black.ttf);
+}
+@font-face {
+    font-family: vazir;
+    src: url(fonts/Vazir-Regular.ttf);
+}
+
+*{
+    background-color: skyblue;
+    direction: rtl;
+    font-family: vazir, badkhat, nazanin, fedra;
+}
+
+h1{
+    text-align: center;
+    font-size: 2.3em;
+    color: white;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+ol li{
+    list-style-type: decimal;
+    font-size: 1.5em;
+}
+
+ol li ol{
+    margin: 16px 8px;
+}
+ol li ol li{
+    list-style-type: decimal-leading-zero;
+    font-size: 0.9em;
+}
+ol li ol li ul{
+    margin-right: 8px;
+    margin-bottom: 24px;
+}
+ol li ol li ul li{
+    list-style-type: disc;
+    font-size: 0.8em;
+}
+ol li ol li ul li a{
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* W3Schools */
+div.tooltip button{
+    border-radius: 8px;
+    padding: 2px 8px;
+    background-color: #333;
+    color: orange;
+    transition: all 100ms;
+}
+div.tooltip button:hover{
+    background-color: orange;
+    color: #333;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+  
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #434;
+    color: #fff;
+    text-align: center;
+    border-radius: 64px;
+    padding: 8px;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 36%;
+    margin-left: -75px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+  
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #434 transparent transparent transparent;
+}
+  
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+  
