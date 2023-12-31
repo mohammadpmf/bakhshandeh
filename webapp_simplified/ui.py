@@ -21,9 +21,9 @@ FG2 = "yellow"
 
 def search(event=None):
     search_item = e_search.get().strip()
-    if len(search_item)==0:
-        msb.showerror("Error!", "Search box should have at least one character!")
-        return    
+    if len(search_item)<3:
+        msb.showerror("Search something More Accurate!", "Search box should have at least three characters!")
+        return
     list_data = news_search(search_item)
     if not list_data:
         msb.showinfo("No data!", "There is no data about the item you searched.")
