@@ -101,3 +101,46 @@ db.students.updateMany({}, { $inc: { likes: 10 } })
 db.teachers.deleteOne({ name: "Mohammad 2" })
 db.teachers.deleteOne({ name: "Mohammad" })
 db.teachers.deleteMany({ name: "Mohammad" })
+db.teachers.deleteOne({ name: "Mohammad" })
+
+
+db.teachers.find({ name: { $eq : "Mohammad"}})
+db.teachers.find({ name: { $ne : "Mohammad"}})
+db.teachers.find({ name: { $gte : "Mohammad"}})
+db.teachers.find({ name: { $lt : "Mohammad"}})
+db.teachers.find({ name: { $in : ["Fatemeh", "Zahra", "Neda"]}})
+db.teachers.find({ name: { $in : ["Fatemeh", "Ailin"]}})
+db.teachers.find({ name: { $not: {$in : ["Fatemeh", "Ailin", "Mohammad"]}}})
+این یکی رو شانسی پیدا کردم.
+db.teachers.find({ name: { $nin : ["Fatemeh", "Ailin", "Mohammad"]}})
+
+برای سرچ کردن بر اساس چند چیز
+db.teachers.find({ $or : [{name: "Ailin"}, {name: "Fatemeh"}]})
+db.teachers.find({ $or : [{name: "Ailin"}, {number: "09356640204"}]})
+
+برای گروه کردن بر اساس یک فیلدd
+db.teachers.aggregate(
+    [ { $group : { _id : "$name" } } ]
+)
+db.teachers.aggregate(
+    [ { $group : { _id : "$surname" } } ]
+)
+db.teachers.aggregate(
+    [ { $group : { _id : "$number" } } ]
+)
+
+برای گرفتن 3 آیتم
+db.teachers.aggregate([ { $limit: 3 } ])
+
+این هم مثال آخری هست. از اینجا به بعد دیگه برای کلاس ها لازم نیست.
+db.teachers.aggregate([
+  {
+    $project: {
+      "name": 1,
+      "surname": 1,
+    }
+  },
+  {
+    $limit: 4
+  }
+])
