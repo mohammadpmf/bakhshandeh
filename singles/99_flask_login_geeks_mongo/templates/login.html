@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Login</title>
+	<style>
+        h1 {
+            color: green;
+            font-size: 3em;
+        }
+        button {
+            width: 70%;
+            margin-right: 15%;
+            margin-left: 15%;
+        }
+        p{
+            color: red;
+            font-size: 2em;
+        }
+	</style>
+</head>
+<body>
+	<nav>
+	<ul>
+		<li>Don't have an account<a href="/register">Sign Up here</a></li>
+	</ul>
+	</nav>
+	<h1>Login to your account</h1>
+    <form action="#" method="post">
+        <table>
+            <tr>
+                <td><label for="username">Username:</label></td>
+                <td><input type="text" name="username"/></td>
+            </tr>
+            <tr>
+                <td><label for="password">Password:</label></td>
+                <td><input type="password" name="password" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Login</button></td>
+            </tr>
+        </table>
+    </form>
+    {% if error %}
+        <p> {{ error }} </p>
+    {% endif %}
+
+</body>
+</html>
