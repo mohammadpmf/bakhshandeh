@@ -28,25 +28,25 @@ def get_news3(test):
     '''
 
 @app.route('/news/all/', methods=['GET'])
-def news_list():
+def a1():
     news = services.news_list()
     return jsonify(news)
 
 
 @app.route('/news/<news_id>/', methods=['GET'])
-def news_details(news_id: str):
+def a2(news_id: str):
     n = services.news_details(news_id)
     return jsonify(n)
 
 
 @app.route('/search/<query>/', methods=['GET'])
-def news_search(query:str):
+def a3(query:str):
     news = services.news_search(query)
     return jsonify(news)
 
 
 @app.route('/update/', methods=['GET'])
-def update_collection():
+def a4():
     data = services.update_collection()
     return jsonify(data)
 

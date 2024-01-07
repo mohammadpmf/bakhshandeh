@@ -67,7 +67,6 @@ db.students.insertMany([
 ])
 
 
-
 db.teachers.find()
 db.teachers.find({}, {_id: 0, name:1, number:1})
 db.teachers.find({}, {_id: 0, name:1})
@@ -102,7 +101,7 @@ db.teachers.deleteOne({ name: "Mohammad 2" })
 db.teachers.deleteOne({ name: "Mohammad" })
 db.teachers.deleteMany({ name: "Mohammad" })
 db.teachers.deleteOne({ name: "Mohammad" })
-
+____________________________________________________________________________________________
 
 db.teachers.find({ name: { $eq : "Mohammad"}})
 db.teachers.find({ name: { $ne : "Mohammad"}})
@@ -111,14 +110,15 @@ db.teachers.find({ name: { $lt : "Mohammad"}})
 db.teachers.find({ name: { $in : ["Fatemeh", "Zahra", "Neda"]}})
 db.teachers.find({ name: { $in : ["Fatemeh", "Ailin"]}})
 db.teachers.find({ name: { $not: {$in : ["Fatemeh", "Ailin", "Mohammad"]}}})
-این یکی رو شانسی پیدا کردم.
+این یکی رو شانسی پیدا کردم. نات و این با هم ترکیب شده. یعنی مثل همون بالایی هست فقط
+ساده تر هست.
 db.teachers.find({ name: { $nin : ["Fatemeh", "Ailin", "Mohammad"]}})
 
 برای سرچ کردن بر اساس چند چیز
 db.teachers.find({ $or : [{name: "Ailin"}, {name: "Fatemeh"}]})
 db.teachers.find({ $or : [{name: "Ailin"}, {number: "09356640204"}]})
 
-برای گروه کردن بر اساس یک فیلدd
+برای گروه کردن بر اساس یک فیلد
 db.teachers.aggregate(
     [ { $group : { _id : "$name" } } ]
 )

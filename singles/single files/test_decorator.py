@@ -15,7 +15,7 @@ def my_decorator2(func):
     return wrapper
 
 @my_decorator
-@my_decorator2
+# @my_decorator2
 def say_whee():
     print("Whee!")
 

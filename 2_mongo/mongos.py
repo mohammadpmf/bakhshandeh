@@ -5,8 +5,7 @@ from pymongo.collection import Collection
 
 def get_db(databse:str) -> Database:
     client = pymongo.MongoClient("localhost", 27017)
-    return client.get_database(databse)
-    return client[databse] # کد آقای بخشنده
+    return client[databse]
 
 
 def list_colecctions(databse:str) -> list:
@@ -17,10 +16,6 @@ def list_colecctions(databse:str) -> list:
 def get_collection(databse:str, collection:str) -> Collection:
     db = get_db(databse)
     return db.get_collection(collection)
-
-
-# def create_many(database:Database, collection:Collection, data:dict):
-#     return database[collection].insert_many([data]).inserted_ids
 
 
 def read(db:Database, collection:str, *args):

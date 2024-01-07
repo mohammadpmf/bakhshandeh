@@ -18,14 +18,6 @@ db = client.get_database('feeds')
 # print(news)
 
 # # command #3
-# # Read
-# data = db['news'].find()
-# for news in data:
-#     print('-'*50, end='\n'*3)
-#     print(news)
-#     print('-'*80, end='\n'*3)
-
-# # command #4
 # # Insert One
 # db['news'].insert_one(khabar)
 # data = db['news'].find()
@@ -34,10 +26,18 @@ db = client.get_database('feeds')
 #    print(news)
 #    print('-'*80, end='\n'*3)
 
-
-# # command #5
+# # command #4
 # # Insert Many
 # db['news'].insert_many(news_data)
+# data = db['news'].find()
+# for news in data:
+#     print('-'*50, end='\n'*3)
+#     print(news)
+#     print('-'*80, end='\n'*3)
+
+
+# # command #5
+# # Read
 # data = db['news'].find()
 # for news in data:
 #     print('-'*50, end='\n'*3)
