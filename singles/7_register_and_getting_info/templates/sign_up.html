@@ -14,12 +14,8 @@
 </head>
 <body>
     <h1>Register a Device</h1>
-    <ul>
-    {% for error in errors %}
-        <li> {{ error }} </li>
-    {% endfor %}
-    </ul>
-    <form action="#" method="post">
+    <p> {{ error }} </p>
+    <form method="post">
         <label for="device_id">Device ID:</label>
         <input type="text" name="device_id"/>
         <button type="submit">Register This Device</button>

@@ -20,7 +20,9 @@
     direction: rtl;
     font-family: vazir, badkhat, nazanin, fedra;
 }
-
+html{
+    scroll-behavior: smooth;
+}
 h1{
     text-align: center;
     font-size: 2.3em;
@@ -50,32 +52,16 @@ ol li ol li ul li{
 ol li ol li ul li a{
     text-decoration: none;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+a>img{
+    position: fixed;
+    width: 50px;
+    right: 16px;
+    opacity: 0.01;
+    transition: 400ms;
+}
+a>img:hover{
+    opacity: 0.3;
+}
 
 
 

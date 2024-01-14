@@ -7,16 +7,10 @@
 	<title>Home</title>
 </head>
 <body>
-	<nav>
-	<ul>
-		<li><a href="/register">Create an account</a></li>
-	</ul>
-	</nav>
+	<a href="/register">Create an account</a>
 	<p>Welcome</p>
-	<ul>
-		{% for error in errors %}
-			<li> {{ error }} </li>
-		{% endfor %}
-	</ul>
+	{% for error in errors %}
+		<p> {{ error }} </p>
+	{% endfor %}
 </body>
 </html>

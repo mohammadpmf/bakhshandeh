@@ -13,12 +13,12 @@ class ComputerInfo():
 
     def get_cpu_percent(self):
         self.df = pd.DataFrame({'Amount of CPU usage in %': [self.cpu_usage, 100-self.cpu_usage]})
-        self.fig = px.bar(self.df, y='Amount of CPU usage in %', color=['using', 'free'], title='CPU Usage in %', range_y=[0, 100], width=500) # plotting the bar chart 
+        self.fig = px.bar(self.df, y='Amount of CPU usage in %', x=["using", "free"], color=['using', 'free'], title='CPU Usage in %', range_y=[0, 100], width=500) # plotting the bar chart 
         return self.fig.to_html()
 
     def get_ram_percent(self):
         self.df = pd.DataFrame({'Amount of RAM usage in %': [self.ram_usage, 100-self.ram_usage]})
-        self.fig = px.bar(self.df, y='Amount of RAM usage in %', color=['using', 'free'], title='Ram Usage in %', range_y=[0, 100], width=500) # plotting the bar chart 
+        self.fig = px.bar(self.df, y='Amount of RAM usage in %', x=["using", "free"], color=['using', 'free'], title='Ram Usage in %', range_y=[0, 100], width=500) # plotting the bar chart
         return self.fig.to_html()
 
     def get_ram_usage(self):
@@ -34,5 +34,5 @@ class ComputerInfo():
     def get_ram_usage2(self):
         # bar_chart
         self.df = pd.DataFrame({'ram_used': [self.ram_used2, self.ram_free2]})
-        self.fig = px.bar(self.df, title='Ram Status', color=['using', 'free'], range_y=[0, self.total_ram], width=500) # plotting the bar chart 
+        self.fig = px.bar(self.df, y="ram_used", x=['using', 'free'], title='Ram Status', color=['using', 'free'], range_y=[0, self.total_ram], width=500) # plotting the bar chart
         return self.fig.to_html()

@@ -1,5 +1,5 @@
 from flask import Flask, request
-from m5 import cpu_percent, ram_percent, get_ram_usage, get_ram_usage2
+from m5 import *
 
 app = Flask(__name__)
 
