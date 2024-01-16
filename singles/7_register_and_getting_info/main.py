@@ -19,7 +19,7 @@ def home_page():
 def get_info():
     status = 200 # Everything is ok
     errors = []
-    device_id  = request.args.get('device_id', None)
+    device_id = request.args.get('device_id', None)
     if device_id == None:
         errors.append("You must Enter a Device ID!")
         status = 405 # not allowed because of web server
@@ -39,7 +39,7 @@ def get_info():
     except:
         status = 400 # Bad Request
         return f"Status Code is: {status}{'<br>'*2}<h1>cpu_usage must be a number.</h1>", status
-    ram_usage  = request.args.get('ram_usage', 0)
+    ram_usage = request.args.get('ram_usage', 0)
     try:
         ram_usage = float(ram_usage)
         if ram_usage>100 or ram_usage<0:
@@ -47,27 +47,35 @@ def get_info():
     except:
         status = 400 # Bad Request
         return f"Status Code is: {status}{'<br>'*2}<h1>ram_usage must be a number.</h1>", status
-    ram_used  = request.args.get('ram_used', 0)
+    ram_used = request.args.get('ram_used', 0)
     try:
         ram_used = float(ram_used)
+        if ram_used<0:
+            errors.append("ram_used must be greater than 0")
     except:
         status = 400 # Bad Request
         return f"Status Code is: {status}{'<br>'*2}<h1>ram_used must be a number.</h1>", status
-    ram_free  = request.args.get('ram_free', 0)
+    ram_free = request.args.get('ram_free', 0)
     try:
         ram_free = float(ram_free)
+        if ram_free<0:
+            errors.append("ram_free must be greater than 0")
     except:
         status = 400 # Bad Request
         return f"Status Code is: {status}{'<br>'*2}<h1>ram_free must be a number.</h1>", status
-    ram_used2  = request.args.get('ram_used2', 0)
+    ram_used2 = request.args.get('ram_used2', 0)
     try:
         ram_used2 = float(ram_used2)
+        if ram_used2<0:
+            errors.append("ram_used2 must be greater than 0")
     except:
         status = 400 # Bad Request
         return f"Status Code is: {status}{'<br>'*2}<h1>ram_used2 must be a number.</h1>", status
     ram_free2  = request.args.get('ram_free2', 0)
     try:
         ram_free2 = float(ram_free2)
+        if ram_free2<0:
+            errors.append("ram_free2 must be greater than 0")
     except:
         status = 400 # Bad Request
         return f"Status Code is: {status}{'<br>'*2}<h1>ram_free2 must be a number.</h1>", status

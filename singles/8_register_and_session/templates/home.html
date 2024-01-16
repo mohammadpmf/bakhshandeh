@@ -7,23 +7,15 @@
 	<title>Home</title>
 </head>
 <body>
-	<nav>
-	<ul>
-		<li><a href="/register">Create an account</a></li>
-		{% if _id %}
-			<li><a href="/logout">Logout</a></li>
-		{% else %}
-			<li><a href="/login">Login Here</a></li>
-		{% endif %}
-	</ul>
-	</nav>
+	<a href="/register">Create an account</a>
+	<br>
 	{% if _id %}
-		<p>Welcome {{ _id }} :D</p>
+		<p>Welcome {{ _id }} :D Click <a href="/logout">here</a> if you want to logout!</p>
+	{% else %}
+		<a href="/login">Login Here</a>
 	{% endif %}
 	{% if error %}
-		<ul>
-			<li> {{ error }} </li>
-		</ul>
+		{{ error }}
 	{% endif %}
 </body>
 </html>

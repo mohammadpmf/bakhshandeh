@@ -12,22 +12,18 @@
     </style>
 </head>
 <body>
-	<nav>
-        <ul>
-            <li>Already have an account? <a href="/login">Login</a></li>
-        </ul>
-    </nav>
+    Already have an account? <a href="/login">Login</a>
     <h1>Register page</h1>
     {% if error %}
-        <ul>
-            <li> {{ error }} </li>
-        </ul>
+    <p> {{ error }} </p>
     {% endif %}
     <form method="post">
         <label for="_id">ID:</label>
         <input type="text" name="_id"/>
         <label for="password">Password:</label>
-        <input type="text" name="password"/>
+        <input type="password" name="password1"/>
+        <label for="password">Repeat Password:</label>
+        <input type="password" name="password2"/>
         <button type="submit">Register</button>
     </form>
 </body>
